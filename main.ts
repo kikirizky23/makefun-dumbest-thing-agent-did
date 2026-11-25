@@ -37,6 +37,9 @@ function countChars(text: string): number {
 function validateLine(text: string): string | null {
   if (text.length === 0) return 'the line is empty';
   if (text.trim().length === 0) return 'the line is only whitespace';
+  if (text !== text.trim()) {
+    return 'the line must not start or end with whitespace';
+  }
   const chars = countChars(text);
   if (chars > MAX_CHARS) {
     return `the line is ${chars} characters, over the ${MAX_CHARS} limit`;
